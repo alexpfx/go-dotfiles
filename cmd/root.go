@@ -10,7 +10,7 @@ import (
 
 const git = "/usr/bin/git"
 const defaultAlias = "cfg"
-const defaultRepo = "https://github.com/alexpfx/linux_dotfiles.git"
+const defaultRepo = "https://github.com/alexpfx/linux_wayland_dotfiles.git"
 const defaultGitdir = ".cfg"
 
 var (
