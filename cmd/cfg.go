@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"fmt"
+	"github.com/alexpfx/go-dotfiles/common/util"
 	"github.com/alexpfx/go-dotfiles/dotfile"
 	"github.com/spf13/cobra"
 	"log"
@@ -18,6 +19,19 @@ var cfgCmd = &cobra.Command{
 			return
 		}
 
+		conf := dotfile.LoadConfig(alias)
+		aliasArgs := []string{
+			"--git-dir=" + conf.GitDir + "/",
+			"--work-tree=" + conf.WorkTree,
+		}
+
+		if len(args) == 0 {
+			return
+		}
+
+		out, stderr, err := util.ExecCmd(git, append(aliasArgs, args...), dryRun)
+		util.CheckFatal(err, stderr)
+		fmt.Println(out)
 	},
 }
 
