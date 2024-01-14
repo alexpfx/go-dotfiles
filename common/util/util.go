@@ -68,6 +68,7 @@ func ExecCmd(cmdStr string, args []string, flags ...bool) (stdout string, stderr
 	if len(flags) > 0 && flags[0] {
 		fmt.Printf("%s %s\n", cmdStr, args)
 	}
+	fmt.Println(cmdStr, args)
 	cmd := exec.Command(cmdStr, args...)
 
 	var sout bytes.Buffer

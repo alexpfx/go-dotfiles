@@ -10,10 +10,11 @@ import (
 
 // cfgCmd represents the cfg command
 var cfgCmd = &cobra.Command{
-	Use:   "cfg",
-	Short: "Comando para interagir com o diretório existente",
+	Use:                "cfg",
+	Short:              "Comando para interagir com o diretório existente",
+	Args:               cobra.MinimumNArgs(1),
+	DisableFlagParsing: true,
 	Run: func(cmd *cobra.Command, args []string) {
-
 		if update {
 			updateCfg(dryRun)
 			return
@@ -62,6 +63,6 @@ func checkArgs(args ...string) {
 
 func init() {
 	rootCmd.AddCommand(cfgCmd)
-	cfgCmd.Flags().BoolVarP(&update, "update", "u", false, "atualiza as configurações")
+	cfgCmd.Flags().BoolVar(&update, "update", false, "atualiza as configurações")
 
 }
