@@ -1,0 +1,1 @@
+Gerenciador pessoal de dotfiles.
